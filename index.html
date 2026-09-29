@@ -1,0 +1,133 @@
+```html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analizador de Movimiento</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Analizador de Movimiento</h1>
+
+        <p class="subtitulo">
+            Selecciona un objeto con un clic y el sistema lo seguirá automáticamente.
+        </p>
+
+        <div class="camera-box">
+
+            <video id="video" autoplay playsinline muted></video>
+            <canvas id="canvas"></canvas>
+
+            <div id="loading" class="loading">
+                Cargando detector de objetos...
+            </div>
+
+        </div>
+
+        <div class="buttons">
+            <button id="btnCamara">Encender cámara</button>
+            <button id="btnIniciar" disabled>Iniciar análisis</button>
+            <button id="btnDetener">Detener</button>
+        </div>
+
+        <div id="estado" class="estado">
+            Enciende la cámara para comenzar.
+        </div>
+
+        <div class="calibracion">
+
+            <h2>Calibración</h2>
+
+            <div class="inputs">
+
+                <div>
+                    <label>Distancia conocida (metros)</label>
+
+                    <input
+                        type="number"
+                        id="metros"
+                        value="1"
+                        min="0.01"
+                        step="0.01"
+                    >
+                </div>
+
+                <div>
+                    <label>Distancia en pantalla (píxeles)</label>
+
+                    <input
+                        type="number"
+                        id="pixeles"
+                        value="200"
+                        min="1"
+                    >
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="resultados">
+
+            <h2>Resultados</h2>
+
+            <div class="grid-resultados">
+
+                <div class="resultado">
+                    <span>Objeto</span>
+                    <strong id="resultadoObjeto">---</strong>
+                </div>
+
+                <div class="resultado">
+                    <span>Tiempo en el aire</span>
+                    <strong id="tiempo">---</strong>
+                </div>
+
+                <div class="resultado">
+                    <span>Velocidad inicial</span>
+                    <strong id="velocidadInicial">---</strong>
+                </div>
+
+                <div class="resultado">
+                    <span>Velocidad final</span>
+                    <strong id="velocidadFinal">---</strong>
+                </div>
+
+                <div class="resultado">
+                    <span>Distancia horizontal</span>
+                    <strong id="distancia">---</strong>
+                </div>
+
+                <div class="resultado">
+                    <span>Altura máxima</span>
+                    <strong id="altura">---</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="trayectoria">
+
+            <h2>Trayectoria</h2>
+
+            <canvas id="grafica"></canvas>
+
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.22.0/dist/tf.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd"></script>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
+```
